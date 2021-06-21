@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <!-- angularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- lodash -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  </head>
+  <body ng-app="ticTacToeApp">
+    <div ng-controller="gameController as ctrl">
+      <i
+        ng-click="ctrl.resetScore();"
+        class="fas fa-redo-alt"
+        title="Reset"
+      ></i>
+      <div class="showcase">
+        <button ng-click="ctrl.newGame();">New Game</button>
+        <div class="board">
+          <!-- diagnoal lines -->
+          <svg
+            ng-if="line==1"
+            height="390"
+            width="390"
+            style="position: absolute"
+          >
+            <line
+              x1="0"
+              y1="0"
+              x2="390"
+              y2="390"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+          <svg
+            ng-if="line==2"
+            height="390"
+            width="390"
+            style="position: absolute"
+          >
+            <line
+              x1="390"
+              y1="0"
+              x2="0"
+              y2="390"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+
+          <!-- vertical lines-->
+          <svg
+            ng-if="line==3"
+            height="390"
+            width="390"
+            style="position: absolute; z-index: 1"
+          >
+            <line
+              x1="64"
+              y1="0"
+              x2="64"
+              y2="390"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+          <svg
+            ng-if="line==4"
+            height="390"
+            width="390"
+            style="position: absolute; z-index: 1"
+          >
+            <line
+              x1="192"
+              y1="0"
+              x2="192"
+              y2="390"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+          <svg
+            ng-if="line==5"
+            height="390"
+            width="390"
+            style="position: absolute; z-index: 1"
+          >
+            <line
+              x1="320"
+              y1="0"
+              x2="320"
+              y2="390"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+
+          <!-- horizontal lines -->
+          <svg
+            ng-if="line==6"
+            height="390"
+            width="390"
+            style="position: absolute; z-index: 1"
+          >
+            <line
+              x1="0"
+              y1="64"
+              x2="390"
+              y2="64"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+          <svg
+            ng-if="line==7"
+            height="390"
+            width="390"
+            style="position: absolute; z-index: 1"
+          >
+            <line
+              x1="0"
+              y1="192"
+              x2="390"
+              y2="192"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+          <svg
+            ng-if="line==8"
+            height="390"
+            width="390"
+            style="position: absolute; z-index: 1"
+          >
+            <line
+              x1="0"
+              y1="320"
+              x2="390"
+              y2="320"
+              style="stroke: red; stroke-width: 4"
+            />
+          </svg>
+
+          <div>
+            <div
+              ng-repeat="positionInfo in board"
+              class="square"
+              ng-click="ctrl.playTurn(positionInfo)"
+              ng-class="{'floatme': !($index % size), 'blinking':draw,'blinking2':positionInfo.won}"
+            >
+              {{positionInfo.player}}
+            </div>
+          </div>
+        </div>
+        <div class="gameinfo">
+          <div ng-class="{'muted': currentPlayer != 'X'}">
+            <i ng-show="winner=='X'" class="fas fa-crown"></i
+            ><span>player 1 (x)</span><br />
+            <span class="player1">{{player1Wins}}</span>
+          </div>
+          <div class="muted">
+            <span>tie</span><br />
+            <span class="tie">{{drawCount}}</span>
+          </div>
+          <div ng-class="{'muted': currentPlayer != 'O'}">
+            <i ng-show="winner=='O'" class="fas fa-crown"></i>
+            <span>player 2 (0)</span><br />
+            <span class="player2">{{player2Wins}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- js -->
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  background-color: #000;
+  color: #fff;
+}
+
+button {
+  text-transform: uppercase;
+  border-radius: 0;
+  border: none;
+  padding: 0.4rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.4s;
+}
+button:hover {
+  letter-spacing: 0.1rem;
+}
+
+.board {
+  margin-top: 2.4rem;
+}
+
+.ng-scope {
+  height: 100%;
+}
+
+.showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* board styles */
+.square {
+  color: #fff;
+  cursor: pointer;
+  float: left;
+  font-size: 8rem;
+  text-align: center;
+  height: 8rem;
+  width: 8rem;
+  line-height: 8rem;
+}
+.square:nth-child(4),
+.square:nth-child(5),
+.square:nth-child(6) {
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+.square:nth-child(2),
+.square:nth-child(5),
+.square:nth-child(8) {
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+.square.floatme {
+  clear: both;
+}
+
+.fas {
+  font-size: 1.4rem;
+  padding: 10px;
+  cursor: pointer;
+}
+.fa-crown {
+  color: yellow;
+  padding: 0;
+}
+
+.gameinfo {
+  margin-top: 2rem;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.muted {
+  color: #787e7f;
+}
+
+.player1,
+.player2,
+.tie {
+  font-size: 1.7rem;
+}
+
+/* animations */
+/* draw animation */
+.blinking {
+  animation-name: blinking;
+  animation-duration: 0.3s;
+  animation-iteration-count: 3;
+}
+/* winning animation */
+.blinking2 {
+  animation-name: blinking2;
+  animation-duration: 0.3s;
+  animation-iteration-count: 3;
+}
+@keyframes blinking {
+  50% {
+    border-color: #000;
+  }
+}
+@keyframes blinking2 {
+  50% {
+    color: #000;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .gameinfo {
+    width: 80%;
+  }
+  .square {
+    font-size: 5rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+  }
+}
