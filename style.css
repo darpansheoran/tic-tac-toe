@@ -23,6 +23,10 @@ button:hover {
   letter-spacing: 0.1rem;
 }
 
+svg {
+  max-height: 390px;
+}
+
 .board {
   margin-top: 2.4rem;
 }
